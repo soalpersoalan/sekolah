@@ -718,11 +718,13 @@ const optionsContainer = document.getElementById("display-options-list");
         submitted_at: new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })
       };
 
-      sessionStorage.setItem("exam_finish_result", JSON.stringify(finishSummary));
+      // Simpan di localStorage agar tidak hilang saat pindah halaman di HP
+      localStorage.setItem("exam_finish_result", JSON.stringify(finishSummary));
       sessionStorage.removeItem(`answers_${this.session.exam.id}_${this.session.student.id}`);
       
       setTimeout(() => {
-        window.location.href = "selesai.html";
+        // Diubah ke hasil.html sesuai nama file HTML kamu
+        window.location.href = "hasil.html";
       }, 500);
 
     } catch (err) {
