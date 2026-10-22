@@ -127,7 +127,7 @@ const StudentAuthModule = {
         login_timestamp: new Date().toISOString()
       };
 
-      sessionStorage.setItem("exam_session_data", JSON.stringify(sessionPayload));
+      localStorage.setItem("exam_session_data", JSON.stringify(sessionPayload));
       this.showAlert(`Identitas Terverifikasi: [Absen ${studentData.attendance_number}] ${studentData.full_name}. Mengalihkan...`, "success");
 
       setTimeout(() => {
@@ -150,13 +150,13 @@ const StudentAuthModule = {
   },
 
   getActiveSession() {
-    const raw = sessionStorage.getItem("exam_session_data");
+    const raw = localStorage.getItem("exam_session_data");
     if (!raw) return null;
     try { return JSON.parse(raw); } catch { return null; }
   },
 
   clearSession() {
-    sessionStorage.removeItem("exam_session_data");
+    localStorage.removeItem("exam_session_data");
     window.location.href = "index.html";
   }
 };
